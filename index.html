@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cre: thanhquy</title>
+  <title>Happy One Thousand Days Together🥳</title>
   <style>
-    body {
+    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+    /* PIN Entry Page Styles */
+    .pin-page {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       display: flex;
@@ -15,6 +18,21 @@
       background: linear-gradient(to bottom right, #ff9ec4, #ffd6ec);
       overflow: hidden;
       color: white;
+    }
+
+    /* Celebration Page Styles */
+    .celebration-page {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Neue', cursive, sans-serif;
+      background: linear-gradient(270deg, #ffd1dc, #ffb6c1, #ffe0f7, #e0f7ff);
+      background-size: 800% 800%;
+      animation: gradientShift 15s ease infinite;
+      overflow: hidden; 
+      text-align: center;
+      color: #ff1493;
+      position: relative;
+      height: 100vh;
     }
 
     .fade-out {
@@ -31,16 +49,208 @@
       width: 100%;
       height: 100%;
       background: url('https://media.discordapp.net/attachments//1378604104217268294/image.png?=683d349f&is=683be31f&hm=7c65c065b86f1c5485fdad0603df4a7b4b25a758091d40f8bf4e043dab5a141b&=&format=webp&quality=lossless&width=864&height=833') repeat;
-      animation: twinkle 50s linear infinite;
+      animation: twinkle 60s linear infinite;
       z-index: 0;
-      opacity: 0.5;
+      opacity: 0.3;
+      will-change: transform;
     }
 
     @keyframes twinkle {
-      0% { background-position: 0 0; }
-      100% { background-position: 2000px 2000px; }
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-500px, -500px, 0); }
     }
 
+    @keyframes gradientShift {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    /* Celebration Page Specific Styles */
+    .celebration-page h1 {
+      font-size: 3.5em;
+      margin-top: 80px;
+      opacity: 0;
+      transform: scale(0.6);
+      animation: popScale 1s ease forwards;
+      animation-delay: 0.3s;
+      color: #ff3366;
+      text-shadow: 0 0 15px #ff66aa;
+      user-select: none;
+    }
+
+    @keyframes popScale {
+      0% { opacity: 0; transform: scale(0.6); }
+      50% { opacity: 1; transform: scale(1.1); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .message {
+      font-size: 1.4em;
+      max-width: 650px;
+      margin: 25px auto 0;
+      min-height: 3em;
+      color: #d6336c;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      animation-delay: 1.5s;
+      user-select: none;
+    }
+
+    @keyframes fadeIn {
+      to {opacity: 1;}
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -80px;
+      width: 40px;
+      height: 60px;
+      border-radius: 50% / 60%;
+      opacity: 0.8;
+      animation: floatUp 12s linear infinite;
+      filter: drop-shadow(0 0 2px #ff77aa);
+      will-change: transform;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate3d(0, -110vh, 0);
+        opacity: 0;
+      }
+    }
+
+    .gift-btn {
+      margin: 35px auto 0;
+      padding: 14px 36px;
+      font-size: 1.3em;
+      border: none;
+      background-color: #ff4c8b;
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 76, 139, 0.6);
+      transition: opacity 0.7s ease;
+      opacity: 0;
+      display: none;
+      z-index: 10;
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .gift-btn:hover {
+      background-color: #ff3c8a;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      animation: explode 1s ease-out forwards;
+      will-change: transform, opacity;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate3d(var(--x), var(--y), 0) scale(0.3);
+        opacity: 0;
+      }
+    }
+
+    .music-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.7em;
+      cursor: pointer;
+      color: #ff3366;
+      filter: drop-shadow(0 0 2px #ff77aa);
+      z-index: 11;
+    }
+
+    .cake {
+      position: fixed;
+      top: 60vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      height: 180px;
+      background-image: url('https://media.discordapp.net/attachments/1368956522813460522/1378630796029460510/birthday-cake-emoji-clipart-xl.png?ex=683d4d7b&is=683bfbfb&hm=9b6478e6220c9206318e01a799b2772890ba55c9e2f386d1e36233605bc1b305&=&format=webp&quality=lossless&width=833&height=833');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 15;
+      transition: top 1.5s ease, opacity 0.3s ease;
+    }
+
+    .firework-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+    }
+
+    .firework {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 20px;
+      background: radial-gradient(circle, #fff 0%, transparent 70%);
+      border-radius: 50% 50% 0 0;
+      transform-origin: bottom center;
+      opacity: 0;
+      animation: fireworkExplode 1s ease forwards;
+    }
+
+    @keyframes fireworkExplode {
+      0% { opacity: 1; transform: translateY(0) scaleY(1); }
+      100% { opacity: 0; transform: translateY(-100px) scaleY(3); }
+    }
+
+    .photo {
+      position: fixed;
+      width: 120px;
+      height: 120px;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+      opacity: 0;
+      pointer-events: none;
+      border: 5px solid white;
+      background: white;
+      z-index: 30;
+      will-change: transform, opacity;
+      transform: translate(-50%, -50%);
+    }
+
+    /* PIN Page Styles */
     .container {
       position: relative;
       z-index: 1;
@@ -150,6 +360,38 @@
       background-color: #ff3c8a;
     }
 
+    /* Responsive */
+    @media (max-width: 480px) {
+      .celebration-page h1 {
+        font-size: 2.2em;
+        margin-top: 50px;
+      }
+      .message {
+        font-size: 1.1em;
+        max-width: 90%;
+      }
+      .gift-btn {
+        font-size: 1.1em;
+        padding: 12px 28px;
+      }
+      .cake {
+        width: 120px;
+        height: 120px;
+        top: 65vh !important;
+      }
+      .firework-container {
+        width: 140px;
+        height: 140px;
+      }
+      .photo {
+        width: 70px !important;
+        height: 70px !important;
+        border-radius: 15px !important;
+        border-width: 3px !important;
+        box-shadow: 0 0 10px rgba(255, 105, 180, 0.6) !important;
+      }
+    }
+
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
@@ -172,39 +414,63 @@
         font-size: 20px;
       }
     }
+
+    /* Page control styles */
+    .page {
+      display: none;
+    }
+    .page.active {
+      display: block;
+    }
   </style>
 </head>
-<body class="fade-out">
-  <div class="stars"></div>
-  <div class="container">
-    <div class="avatar">
-      <img src="https://cdn.discordapp.com/attachments/1393884175584591907/1393895457834664026/z6800188145044_3811dfd9a906f07b414585322046c8d2.jpg?ex=687778ce&is=6876274e&hm=0b85b0a83ace6d15ae4163b9a3eb3ad45fe9ba22ecbffd8a39a8fa2e18139d3d&">
-      Bé Iu 🥰
-    </div>
-    <div class="pass-box">
-      <h1>Ngày Tháng Mình Quen Nhau </h1>
-      <input type="text" class="input-field" id="pass" readonly>
-      <div class="keypad">
-        <div class="key" onclick="appendNum('1')">1</div>
-        <div class="key" onclick="appendNum('2')">2</div>
-        <div class="key" onclick="appendNum('3')">3</div>
-        <div class="key" onclick="appendNum('4')">4</div>
-        <div class="key" onclick="appendNum('5')">5</div>
-        <div class="key" onclick="appendNum('6')">6</div>
-        <div class="key" onclick="appendNum('7')">7</div>
-        <div class="key" onclick="appendNum('8')">8</div>
-        <div class="key" onclick="appendNum('9')">9</div>
-        <div class="key" onclick="clearPass()">X</div>
-        <div class="key" onclick="appendNum('0')">0</div>
-        <div class="key" onclick="submitPass()">✔</div>
+<body class="fade-out pin-page">
+  <!-- PIN Entry Page -->
+  <div id="pin-page" class="page active">
+    <div class="stars"></div>
+    <div class="container">
+      <div class="avatar">
+        <img src="https://cdn.chiraitori.me/z6800188155907_0472121e0b07be3c8f6c6e53e030f914.jpg">
+        Bé Iu 🥰
+      </div>
+      <div class="pass-box">
+        <h1>Ngày Tháng Mình Quen Nhau </h1>
+        <input type="text" class="input-field" id="pass" readonly autocomplete="off">
+        <div class="keypad">
+          <div class="key" onclick="appendNum('1')">1</div>
+          <div class="key" onclick="appendNum('2')">2</div>
+          <div class="key" onclick="appendNum('3')">3</div>
+          <div class="key" onclick="appendNum('4')">4</div>
+          <div class="key" onclick="appendNum('5')">5</div>
+          <div class="key" onclick="appendNum('6')">6</div>
+          <div class="key" onclick="appendNum('7')">7</div>
+          <div class="key" onclick="appendNum('8')">8</div>
+          <div class="key" onclick="appendNum('9')">9</div>
+          <div class="key" onclick="clearPass()">X</div>
+          <div class="key" onclick="appendNum('0')">0</div>
+          <div class="key" onclick="submitPass()">✔</div>
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- Celebration Page -->
+  <div id="celebration-page" class="page celebration-page">
+    <audio id="music" loop src="https://cdn.chiraitori.me/6800461126426.mp3"></audio>
+    <button class="music-btn" onclick="toggleMusic()">🎵</button>
+
+    <h1> 💝 Chúc Mừng 1000 Ngày Bám Đít Nhau 💝</h1>
+    <div class="message" id="typing"></div>
+    <button class="gift-btn" id="giftBtn">🎁 Bốc Sít Rịt Ở Đây Nè Em 🎁</button>
+
+    <div class="cake" id="cake"></div>
+    <div class="firework-container" id="fireworkContainer"></div>
+  </div>
+
   <script>
     const correctPass = "2510";
-    const redirectURL = "file:///C:/Users/Admin/Downloads/mkoch/web/codeanh.html"; // Đổi thành link thật của bạn
 
+    // PIN Entry Functions
     function appendNum(num) {
       const input = document.getElementById('pass');
       if (input.value.length < 6) input.value += num;
@@ -215,20 +481,200 @@
     }
 
     function submitPass() {
+      // Prevent any default behavior
+      event?.preventDefault?.();
+      event?.stopPropagation?.();
+      
       const pass = document.getElementById('pass').value;
       if (pass === correctPass) {
         document.body.classList.add('hidden');
         setTimeout(() => {
-          window.location.href = redirectURL;
+          showCelebrationPage();
         }, 800);
       } else {
         alert('Ê Ngày Tháng Quen Nhau Mà Em Quên À 🙂');
       }
+      return false; // Prevent any form submission
     }
 
-    // Hiện hiệu ứng khi trang tải
+    function showCelebrationPage() {
+      document.getElementById('pin-page').classList.remove('active');
+      document.getElementById('celebration-page').classList.add('active');
+      document.body.className = 'celebration-page';
+      document.body.classList.remove('hidden');
+      
+      // Start celebration page animations
+      setTimeout(startCelebration, 100);
+    }
+
+    function startCelebration() {
+      // Type the message
+      const message = "🥰 Chúc mừng một ngàn ngày bám đít bên nhau em nhé. Mong rằng khoảng thời gian vừa qua giúp chúng ta có thể hiểu nhau hơn. Anh mong rằng bây giờ và về sau em vẫn là người con gái đồng hành và bên cạnh anh em nhé  🥰 .          ❤️ YÊU EM ❤️";
+      let idx = 0;
+      function type() {
+        if (idx < message.length) {
+          document.getElementById("typing").textContent += message[idx++];
+          setTimeout(type, 45);
+        } else {
+          // Show gift button after message is complete
+          setTimeout(() => {
+            const giftBtn = document.getElementById('giftBtn');
+            giftBtn.style.display = 'block';
+            giftBtn.style.opacity = '1';
+          }, 500);
+        }
+      }
+      setTimeout(type, 1600);
+
+      // Create balloons (reduced for performance)
+      const colors = ['#ffb6c1', '#ffd1dc', '#ff69b4', '#ffc0cb', '#ff77aa'];
+      for (let i = 0; i < 15; i++) {
+        const balloon = document.createElement("div");
+        balloon.className = "balloon";
+        balloon.style.left = Math.random() * 100 + "vw";
+        balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        balloon.style.animationDelay = (Math.random() * 10) + "s";
+        balloon.style.animationDuration = (7 + Math.random() * 8) + "s";
+        balloon.style.bottom = "-60px";
+        document.body.appendChild(balloon);
+      }
+
+      // Setup gift button
+      document.getElementById("giftBtn").addEventListener("click", () => {
+        // Hide all text elements
+        const h1 = document.querySelector('.celebration-page h1');
+        const message = document.getElementById('typing');
+        const giftBtn = document.getElementById('giftBtn');
+        
+        if (h1) h1.style.display = 'none';
+        if (message) message.style.display = 'none';
+        if (giftBtn) giftBtn.style.display = 'none';
+        
+        // Show cake and start animations
+        const cake = document.getElementById('cake');
+        cake.style.top = '50vh';
+        cake.style.opacity = 1;
+        setTimeout(() => {
+          showConfetti();
+          showFirework();
+          spawnHeartPhotosCentered();
+        }, 1500);
+      });
+    }
+
+    // Celebration Functions
+    function toggleMusic() {
+      const music = document.getElementById("music");
+      music.paused ? music.play() : music.pause();
+    }
+
+    function showConfetti() {
+      const confettiColors = ['#ff6f91', '#ff9671', '#ffc75f', '#f9f871', '#ff3c78'];
+      // Reduced for performance
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+        confetti.style.setProperty('--x', (Math.random() * 400 - 200) + 'px');
+        confetti.style.setProperty('--y', (Math.random() * -400) + 'px');
+        confetti.style.left = (window.innerWidth / 2) + 'px';
+        confetti.style.top = (window.innerHeight / 2) + 'px';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 1000);
+      }
+    }
+
+    function showFirework() {
+      const container = document.getElementById('fireworkContainer');
+      container.innerHTML = '';
+      container.style.opacity = 1;
+      // Reduced for performance
+      for (let i = 0; i < 20; i++) {
+        const fw = document.createElement('div');
+        fw.className = 'firework';
+        fw.style.transform = `rotate(${i * 18}deg) translateY(-40px)`;
+        container.appendChild(fw);
+      }
+      setTimeout(() => container.style.opacity = 0, 1000);
+    }
+
+    const photoUrls = [
+      "https://cdn.chiraitori.me/z6800188155907_0472121e0b07be3c8f6c6e53e030f914.jpg",
+      "https://cdn.chiraitori.me/z6800188145044_3811dfd9a906f07b414585322046c8d2.jpg",
+      "https://cdn.chiraitori.me/z6800188140936_29f462e48c6cb262a856cb981977e8e8.jpg",
+      "https://cdn.chiraitori.me/z6800188130327_7ea7a10f6fa9b393bfc718420b926a41.jpg"
+    ];
+
+    // Optimized Heart Animation
+    function createHeartPhotoCentered(idx, total) {
+      const photo = document.createElement('img');
+      photo.src = photoUrls[idx % photoUrls.length];
+      photo.className = 'photo';
+      photo.loading = 'lazy';
+      document.body.appendChild(photo);
+
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const t = Math.PI * 2 * (idx / total);
+
+      // Scale for responsive design
+      let scale = window.innerWidth <= 480 ? 14 : 22;
+
+      // Heart equation
+      const targetX = scale * 16 * Math.pow(Math.sin(t), 3);
+      const targetY = -scale * (13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+
+      // Set final position immediately
+      photo.style.left = (centerX + targetX) + 'px';
+      photo.style.top = (centerY + targetY) + 'px';
+      
+      // Start with scale 0 and animate to scale 1
+      photo.style.transform = 'translate(-50%, -50%) scale(0)';
+      photo.style.transition = 'transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.5s ease';
+      photo.style.opacity = '1';
+      photo.style.pointerEvents = 'auto';
+      
+      // Trigger animation
+      requestAnimationFrame(() => {
+        photo.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+    }
+
+    function spawnHeartPhotosCentered() {
+      // Reduced photos for better performance
+      const totalPhotos = 20;
+      for (let i = 0; i < totalPhotos; i++) {
+        setTimeout(() => createHeartPhotoCentered(i, totalPhotos), i * 120);
+      }
+    }
+
+    // Initialize PIN page
     window.onload = () => {
       document.body.classList.remove('hidden');
+      
+      // Prevent any form submission behavior
+      const passInput = document.getElementById('pass');
+      passInput.addEventListener('keydown', (e) => {
+        e.preventDefault(); // Prevent any default input behavior
+        if (e.key === 'Enter') {
+          submitPass();
+        }
+      });
+
+      // Prevent any form submission
+      document.addEventListener('submit', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      });
+
+      // Prevent navigation
+      window.addEventListener('beforeunload', (e) => {
+        if (document.getElementById('celebration-page').classList.contains('active')) {
+          e.preventDefault();
+          e.returnValue = '';
+        }
+      });
     };
   </script>
 </body>
